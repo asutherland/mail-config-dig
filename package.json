@@ -1,0 +1,16 @@
+{
+  "name": "mail-config-dig",
+  "version": "0.1.0",
+  "description": "Investigate mail servers for a domain",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Sutherland <asutherland@asutherland.org>",
+  "license": "Apache 2",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "node-forge": "^0.6.34",
+    "tld": "0.0.2"
+  }
+}
