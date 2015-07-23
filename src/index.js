@@ -20,6 +20,7 @@
 const program = require('commander');
 const validateServerCert = require('./validate-server-cert');
 const mxLookup = require('./mx-lookup');
+const reverseLookup = require('./reverse-lookup');
 
 function parsePortOrService(portOrService) {
   // Yes, we could depend on /etc/services and it being correct.  And people
@@ -53,6 +54,18 @@ function parsePortOrService(portOrService) {
       return port;
   }
 }
+
+program
+  .command('reverse <domain>')
+  .action(function(domain) {
+    reverseLookup(domain).then(function(results) {
+      console.log('cname?', results.cnames);
+      console.log('forward to IP:', results.ips);
+      console.log('reverses to:', results.reversed);
+    }, function(err) {
+      console.error('problem reversing:', err);
+    });
+  });
 
 program
   .command('mx <domain>')
